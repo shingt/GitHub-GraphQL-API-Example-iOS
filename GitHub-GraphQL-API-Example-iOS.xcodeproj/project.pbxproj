@@ -1,0 +1,367 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		120103741DFBE26E00E8128E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120103731DFBE26E00E8128E /* AppDelegate.swift */; };
+		120103761DFBE26E00E8128E /* RepositoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120103751DFBE26E00E8128E /* RepositoriesViewController.swift */; };
+		1201037B1DFBE26E00E8128E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1201037A1DFBE26E00E8128E /* Assets.xcassets */; };
+		1201037E1DFBE26E00E8128E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1201037C1DFBE26E00E8128E /* LaunchScreen.storyboard */; };
+		120103871DFBF0AD00E8128E /* Apollo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 120103861DFBF0AD00E8128E /* Apollo.framework */; };
+		1201038B1DFBF28200E8128E /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1201038A1DFBF28200E8128E /* API.swift */; };
+		12A3242C1DFE56EC00D905E7 /* RepositoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A3242B1DFE56EC00D905E7 /* RepositoryCell.swift */; };
+		12A3242E1DFF499800D905E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12A3242D1DFF499800D905E7 /* Main.storyboard */; };
+		12F01AA41DFD05CD00EB0547 /* RepositoriesViewController.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 12F01AA31DFD05CD00EB0547 /* RepositoriesViewController.graphql */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		120103701DFBE26E00E8128E /* GitHub-GraphQL-API-Example-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GitHub-GraphQL-API-Example-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		120103731DFBE26E00E8128E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		120103751DFBE26E00E8128E /* RepositoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesViewController.swift; sourceTree = "<group>"; };
+		1201037A1DFBE26E00E8128E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1201037D1DFBE26E00E8128E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1201037F1DFBE26E00E8128E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		120103861DFBF0AD00E8128E /* Apollo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Apollo.framework; path = Carthage/Build/iOS/Apollo.framework; sourceTree = "<group>"; };
+		1201038A1DFBF28200E8128E /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		12A3242B1DFE56EC00D905E7 /* RepositoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryCell.swift; sourceTree = "<group>"; };
+		12A3242D1DFF499800D905E7 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		12F01AA31DFD05CD00EB0547 /* RepositoriesViewController.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RepositoriesViewController.graphql; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1201036D1DFBE26E00E8128E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				120103871DFBF0AD00E8128E /* Apollo.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		120103671DFBE26E00E8128E = {
+			isa = PBXGroup;
+			children = (
+				120103721DFBE26E00E8128E /* GitHub-GraphQL-API-Example-iOS */,
+				120103711DFBE26E00E8128E /* Products */,
+				120103851DFBF0AD00E8128E /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		120103711DFBE26E00E8128E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				120103701DFBE26E00E8128E /* GitHub-GraphQL-API-Example-iOS.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		120103721DFBE26E00E8128E /* GitHub-GraphQL-API-Example-iOS */ = {
+			isa = PBXGroup;
+			children = (
+				120103731DFBE26E00E8128E /* AppDelegate.swift */,
+				120103751DFBE26E00E8128E /* RepositoriesViewController.swift */,
+				12A3242B1DFE56EC00D905E7 /* RepositoryCell.swift */,
+				1201038A1DFBF28200E8128E /* API.swift */,
+				12A3242D1DFF499800D905E7 /* Main.storyboard */,
+				12F01AA31DFD05CD00EB0547 /* RepositoriesViewController.graphql */,
+				1201037A1DFBE26E00E8128E /* Assets.xcassets */,
+				1201037C1DFBE26E00E8128E /* LaunchScreen.storyboard */,
+				1201037F1DFBE26E00E8128E /* Info.plist */,
+			);
+			path = "GitHub-GraphQL-API-Example-iOS";
+			sourceTree = "<group>";
+		};
+		120103851DFBF0AD00E8128E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				120103861DFBF0AD00E8128E /* Apollo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1201036F1DFBE26E00E8128E /* GitHub-GraphQL-API-Example-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 120103821DFBE26E00E8128E /* Build configuration list for PBXNativeTarget "GitHub-GraphQL-API-Example-iOS" */;
+			buildPhases = (
+				120103891DFBF22000E8128E /* Generate Apollo GraphQL API */,
+				1201036C1DFBE26E00E8128E /* Sources */,
+				1201036D1DFBE26E00E8128E /* Frameworks */,
+				1201036E1DFBE26E00E8128E /* Resources */,
+				120103881DFBF0C900E8128E /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "GitHub-GraphQL-API-Example-iOS";
+			productName = "GitHub-GraphQL-API-Example-iOS";
+			productReference = 120103701DFBE26E00E8128E /* GitHub-GraphQL-API-Example-iOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		120103681DFBE26E00E8128E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0810;
+				LastUpgradeCheck = 0810;
+				ORGANIZATIONNAME = shingt;
+				TargetAttributes = {
+					1201036F1DFBE26E00E8128E = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 9527BZ5WE5;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 1201036B1DFBE26E00E8128E /* Build configuration list for PBXProject "GitHub-GraphQL-API-Example-iOS" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 120103671DFBE26E00E8128E;
+			productRefGroup = 120103711DFBE26E00E8128E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1201036F1DFBE26E00E8128E /* GitHub-GraphQL-API-Example-iOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1201036E1DFBE26E00E8128E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1201037E1DFBE26E00E8128E /* LaunchScreen.storyboard in Resources */,
+				1201037B1DFBE26E00E8128E /* Assets.xcassets in Resources */,
+				12F01AA41DFD05CD00EB0547 /* RepositoriesViewController.graphql in Resources */,
+				12A3242E1DFF499800D905E7 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		120103881DFBF0C900E8128E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Apollo.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+		120103891DFBF22000E8128E /* Generate Apollo GraphQL API */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Generate Apollo GraphQL API";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "APOLLO_FRAMEWORK_PATH=$(eval find $FRAMEWORK_SEARCH_PATHS -name \"Apollo.framework\" -maxdepth 1)\n\nif [ -z \"$APOLLO_FRAMEWORK_PATH\" ]; then\necho \"error: Couldn't find Apollo.framework in FRAMEWORK_SEARCH_PATHS; make sure to add the framework to your project.\"\nexit 1\nfi\n\ncd ${SRCROOT}/${TARGET_NAME}\n$APOLLO_FRAMEWORK_PATH/check-and-run-apollo-codegen.sh generate $(find . -name '*.graphql') --schema schema.json --output API.swift";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1201036C1DFBE26E00E8128E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				120103761DFBE26E00E8128E /* RepositoriesViewController.swift in Sources */,
+				1201038B1DFBF28200E8128E /* API.swift in Sources */,
+				120103741DFBE26E00E8128E /* AppDelegate.swift in Sources */,
+				12A3242C1DFE56EC00D905E7 /* RepositoryCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		1201037C1DFBE26E00E8128E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1201037D1DFBE26E00E8128E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		120103801DFBE26E00E8128E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		120103811DFBE26E00E8128E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		120103831DFBE26E00E8128E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9527BZ5WE5;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = "GitHub-GraphQL-API-Example-iOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.shingt.GitHub-GraphQL-API-Example-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		120103841DFBE26E00E8128E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9527BZ5WE5;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = "GitHub-GraphQL-API-Example-iOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.shingt.GitHub-GraphQL-API-Example-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1201036B1DFBE26E00E8128E /* Build configuration list for PBXProject "GitHub-GraphQL-API-Example-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				120103801DFBE26E00E8128E /* Debug */,
+				120103811DFBE26E00E8128E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		120103821DFBE26E00E8128E /* Build configuration list for PBXNativeTarget "GitHub-GraphQL-API-Example-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				120103831DFBE26E00E8128E /* Debug */,
+				120103841DFBE26E00E8128E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 120103681DFBE26E00E8128E /* Project object */;
+}

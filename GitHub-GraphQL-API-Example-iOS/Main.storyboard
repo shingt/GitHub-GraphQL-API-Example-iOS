@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="iya-P1-MDn">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="vaP-L4-xAt">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MlA-EN-ZHx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController id="iya-P1-MDn" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nJ3-es-t9P">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Mz3-K0-ASN" kind="relationship" relationship="rootViewController" id="pcq-al-irZ"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="-655" y="182"/>
+        </scene>
+        <!--Repositories View Controller-->
+        <scene sceneID="PhR-S1-xgt">
+            <objects>
+                <tableViewController id="Mz3-K0-ASN" customClass="RepositoriesViewController" customModule="GitHub_GraphQL_API_Example_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="54" sectionHeaderHeight="28" sectionFooterHeight="28" id="fRi-ig-MUw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RepositoryCell" rowHeight="54" id="gXd-9W-R8u" customClass="RepositoryCell" customModule="GitHub_GraphQL_API_Example_iOS" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="54"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gXd-9W-R8u" id="fAV-ch-Z8n">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="53"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tLR-dS-fOf">
+                                            <rect key="frame" x="16" y="8" width="38" height="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Star: 10000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="af0-AT-Ubq">
+                                            <rect key="frame" x="269" y="19" width="90" height="16"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="90" id="o1u-CM-Cyg"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="https://example.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mHT-5Y-btC">
+                                            <rect key="frame" x="16" y="33" width="99" height="12"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="tLR-dS-fOf" firstAttribute="leading" secondItem="fAV-ch-Z8n" secondAttribute="leading" constant="16" id="RDP-Wr-ok8"/>
+                                        <constraint firstItem="mHT-5Y-btC" firstAttribute="leading" secondItem="tLR-dS-fOf" secondAttribute="leading" id="Wbh-ck-c54"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="af0-AT-Ubq" secondAttribute="trailing" constant="8" id="hdW-RO-1O0"/>
+                                        <constraint firstItem="tLR-dS-fOf" firstAttribute="top" secondItem="fAV-ch-Z8n" secondAttribute="top" constant="8" id="ldT-1h-6gE"/>
+                                        <constraint firstItem="af0-AT-Ubq" firstAttribute="centerY" secondItem="fAV-ch-Z8n" secondAttribute="centerY" id="phb-8o-NXc"/>
+                                        <constraint firstItem="mHT-5Y-btC" firstAttribute="top" secondItem="tLR-dS-fOf" secondAttribute="bottom" constant="8" id="q8x-Vn-iav"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="nameLabel" destination="tLR-dS-fOf" id="3NH-Jb-xOe"/>
+                                    <outlet property="stargazersCountLabel" destination="af0-AT-Ubq" id="doL-tb-f5A"/>
+                                    <outlet property="urlLabel" destination="mHT-5Y-btC" id="GeP-2C-vUm"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Mz3-K0-ASN" id="PY4-w8-Ant"/>
+                            <outlet property="delegate" destination="Mz3-K0-ASN" id="86O-Ci-Qlm"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="ep3-Aq-i35"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z00-cV-BZ9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="53.600000000000001" y="182.15892053973016"/>
+        </scene>
+    </scenes>
+</document>
