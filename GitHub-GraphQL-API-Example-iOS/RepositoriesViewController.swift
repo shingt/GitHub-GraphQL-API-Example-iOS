@@ -30,7 +30,7 @@ final class RepositoriesViewController: UITableViewController {
             if let error = error { print("Error: \(error)"); return }
             
             result?.data?.search.edges?.forEach { edge in
-                guard let repository = edge?.node?.asRepository else { return }
+                guard let repository = edge?.node?.asRepository?.fragments.repositoryDetails else { return }
                 print("Name: \(repository.name)")
                 print("Path: \(repository.url)")
                 print("Owner: \(repository.owner.path)")
@@ -55,7 +55,7 @@ final class RepositoriesViewController: UITableViewController {
             fatalError()
         }
         
-        cell.configure(with: repository)
+        cell.configure(with: repository.fragments.repositoryDetails)
         return cell
     }
     

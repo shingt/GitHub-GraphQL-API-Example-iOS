@@ -10,20 +10,13 @@ public final class SearchRepositoriesQuery: GraphQLQuery {
     "      node {" +
     "        __typename" +
     "        ... on Repository {" +
-    "          name" +
-    "          owner {" +
-    "            __typename" +
-    "            path" +
-    "          }" +
-    "          stargazers {" +
-    "            totalCount" +
-    "          }" +
-    "          url" +
+    "          ...RepositoryDetails" +
     "        }" +
     "      }" +
     "    }" +
     "  }" +
     "}"
+  public static let queryDocument = operationDefinition.appending(RepositoryDetails.fragmentDefinition)
 
   public let query: String
   public let count: Int
@@ -75,39 +68,69 @@ public final class SearchRepositoriesQuery: GraphQLQuery {
             public static let possibleTypes = ["Repository"]
 
             public let __typename = "Repository"
-            public let name: String
-            public let owner: Owner
-            public let stargazers: Stargazer
-            public let url: String
+
+            public let fragments: Fragments
 
             public init(reader: GraphQLResultReader) throws {
-              name = try reader.value(for: Field(responseName: "name"))
-              owner = try reader.value(for: Field(responseName: "owner"))
-              stargazers = try reader.value(for: Field(responseName: "stargazers"))
-              url = try reader.value(for: Field(responseName: "url"))
+              let repositoryDetails = try RepositoryDetails(reader: reader)
+              fragments = Fragments(repositoryDetails: repositoryDetails)
             }
 
-            public struct Owner: GraphQLMappable {
-              public let __typename: String
-              public let path: String
-
-              public init(reader: GraphQLResultReader) throws {
-                __typename = try reader.value(for: Field(responseName: "__typename"))
-                path = try reader.value(for: Field(responseName: "path"))
-              }
-            }
-
-            public struct Stargazer: GraphQLMappable {
-              public let __typename = "StargazerConnection"
-              public let totalCount: Int
-
-              public init(reader: GraphQLResultReader) throws {
-                totalCount = try reader.value(for: Field(responseName: "totalCount"))
-              }
+            public struct Fragments {
+              public let repositoryDetails: RepositoryDetails
             }
           }
         }
       }
+    }
+  }
+}
+
+public struct RepositoryDetails: GraphQLNamedFragment {
+  public static let fragmentDefinition =
+    "fragment RepositoryDetails on Repository {" +
+    "  name" +
+    "  owner {" +
+    "    __typename" +
+    "    path" +
+    "  }" +
+    "  stargazers {" +
+    "    totalCount" +
+    "  }" +
+    "  url" +
+    "}"
+
+  public static let possibleTypes = ["Repository"]
+
+  public let __typename = "Repository"
+  public let name: String
+  public let owner: Owner
+  public let stargazers: Stargazer
+  public let url: String
+
+  public init(reader: GraphQLResultReader) throws {
+    name = try reader.value(for: Field(responseName: "name"))
+    owner = try reader.value(for: Field(responseName: "owner"))
+    stargazers = try reader.value(for: Field(responseName: "stargazers"))
+    url = try reader.value(for: Field(responseName: "url"))
+  }
+
+  public struct Owner: GraphQLMappable {
+    public let __typename: String
+    public let path: String
+
+    public init(reader: GraphQLResultReader) throws {
+      __typename = try reader.value(for: Field(responseName: "__typename"))
+      path = try reader.value(for: Field(responseName: "path"))
+    }
+  }
+
+  public struct Stargazer: GraphQLMappable {
+    public let __typename = "StargazerConnection"
+    public let totalCount: Int
+
+    public init(reader: GraphQLResultReader) throws {
+      totalCount = try reader.value(for: Field(responseName: "totalCount"))
     }
   }
 }

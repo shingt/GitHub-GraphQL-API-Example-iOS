@@ -15,6 +15,7 @@
 		1201038B1DFBF28200E8128E /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1201038A1DFBF28200E8128E /* API.swift */; };
 		12A3242C1DFE56EC00D905E7 /* RepositoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A3242B1DFE56EC00D905E7 /* RepositoryCell.swift */; };
 		12A3242E1DFF499800D905E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12A3242D1DFF499800D905E7 /* Main.storyboard */; };
+		12A324301E0215E400D905E7 /* RepositoryDetails.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 12A3242F1E0215E400D905E7 /* RepositoryDetails.graphql */; };
 		12F01AA41DFD05CD00EB0547 /* RepositoriesViewController.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 12F01AA31DFD05CD00EB0547 /* RepositoriesViewController.graphql */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +30,7 @@
 		1201038A1DFBF28200E8128E /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		12A3242B1DFE56EC00D905E7 /* RepositoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryCell.swift; sourceTree = "<group>"; };
 		12A3242D1DFF499800D905E7 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		12A3242F1E0215E400D905E7 /* RepositoryDetails.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RepositoryDetails.graphql; sourceTree = "<group>"; };
 		12F01AA31DFD05CD00EB0547 /* RepositoriesViewController.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RepositoriesViewController.graphql; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -70,6 +72,7 @@
 				1201038A1DFBF28200E8128E /* API.swift */,
 				12A3242D1DFF499800D905E7 /* Main.storyboard */,
 				12F01AA31DFD05CD00EB0547 /* RepositoriesViewController.graphql */,
+				12A3242F1E0215E400D905E7 /* RepositoryDetails.graphql */,
 				1201037A1DFBE26E00E8128E /* Assets.xcassets */,
 				1201037C1DFBE26E00E8128E /* LaunchScreen.storyboard */,
 				1201037F1DFBE26E00E8128E /* Info.plist */,
@@ -151,6 +154,7 @@
 				1201037B1DFBE26E00E8128E /* Assets.xcassets in Resources */,
 				12F01AA41DFD05CD00EB0547 /* RepositoriesViewController.graphql in Resources */,
 				12A3242E1DFF499800D905E7 /* Main.storyboard in Resources */,
+				12A324301E0215E400D905E7 /* RepositoryDetails.graphql in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

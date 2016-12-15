@@ -1,0 +1,10 @@
+fragment RepositoryDetails on Repository {
+    name
+    owner {
+        path
+    }
+    stargazers {
+        totalCount
+    }
+    url
+}

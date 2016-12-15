@@ -3,14 +3,7 @@ query SearchRepositories($query: String!, $count: Int!) {
         edges {
             node {
                 ... on Repository {
-                    name
-                    owner {
-                        path
-                    }
-                    stargazers {
-                        totalCount
-                    }
-                    url
+                    ...RepositoryDetails
                 }
             }
         }

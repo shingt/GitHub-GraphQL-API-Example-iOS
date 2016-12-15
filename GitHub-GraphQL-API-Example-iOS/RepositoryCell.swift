@@ -9,7 +9,7 @@ final class RepositoryCell: UITableViewCell {
         super.awakeFromNib()
     }
     
-    func configure(with repository: SearchRepositoriesQuery.Data.Search.Edge.Node.AsRepository) {
+    func configure(with repository: RepositoryDetails) {
         nameLabel.text = "\(repository.owner.path)/\(repository.name)"
         urlLabel.text = repository.url
         stargazersCountLabel.text = "Stars: \(repository.stargazers.totalCount)"
