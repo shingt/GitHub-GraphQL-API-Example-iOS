@@ -1,7 +1,7 @@
 import UIKit
 import Apollo
 
-private let token = "d154256185aa9062e4fd4544434a8c4b3834e602"
+private let token = "YOUR_TOKEN"
 
 let apollo : ApolloClient = {
     let configuration: URLSessionConfiguration = .default
