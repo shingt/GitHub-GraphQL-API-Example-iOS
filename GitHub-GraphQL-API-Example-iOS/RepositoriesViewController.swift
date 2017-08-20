@@ -13,7 +13,7 @@ final class RepositoriesViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
       
@@ -25,8 +25,9 @@ final class RepositoriesViewController: UITableViewController {
         configuration.requestCachePolicy = .reloadIgnoringLocalCacheData // To avoid 412
         
         let url = URL(string: "https://api.github.com/graphql")!
-        let apollo = ApolloClient(networkTransport: HTTPNetworkTransport(url: url, configuration: configuration))        
-        apollo.fetch(query: SearchRepositoriesQuery(query: queryString, count: 10), completionHandler: { (result, error) in
+        let apollo = ApolloClient(networkTransport: HTTPNetworkTransport(url: url, configuration: configuration))
+        
+        apollo.fetch(query: SearchRepositoriesQuery(query: queryString, count: 10)) { (result, error) in
             if let error = error { print("Error: \(error)"); return }
             
             result?.data?.search.edges?.forEach { edge in
@@ -37,9 +38,10 @@ final class RepositoriesViewController: UITableViewController {
                 print("Stars: \(repository.stargazers.totalCount)")
                 print("\n")
             }
-           
+            
             self.repositories = result?.data?.search.edges?.flatMap { $0?.node?.asRepository }
-        })
+        }
+
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
