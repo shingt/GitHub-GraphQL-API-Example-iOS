@@ -10,7 +10,7 @@ final class RepositoryCell: UITableViewCell {
     }
     
     func configure(with repository: RepositoryDetails) {
-        nameLabel.text = "\(repository.owner.path)/\(repository.name)"
+        nameLabel.text = "\(repository.owner.resourcePath)/\(repository.name)"
         urlLabel.text = repository.url
         stargazersCountLabel.text = "Stars: \(repository.stargazers.totalCount)"
     }

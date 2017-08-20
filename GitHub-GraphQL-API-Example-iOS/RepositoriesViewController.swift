@@ -1,7 +1,4 @@
 import UIKit
-import Apollo
-
-private let token = "YOUR_TOKEN"
 
 final class RepositoriesViewController: UITableViewController {
     var repositories: [SearchRepositoriesQuery.Data.Search.Edge.Node.AsRepository]? {
@@ -20,21 +17,14 @@ final class RepositoriesViewController: UITableViewController {
         let queryString = "GraphQL"
         navigationItem.title = "Query: \(queryString)"
         
-        let configuration: URLSessionConfiguration = .default
-        configuration.httpAdditionalHeaders = ["Authorization": "Bearer \(token)"]
-        configuration.requestCachePolicy = .reloadIgnoringLocalCacheData // To avoid 412
-        
-        let url = URL(string: "https://api.github.com/graphql")!
-        let apollo = ApolloClient(networkTransport: HTTPNetworkTransport(url: url, configuration: configuration))
-        
         apollo.fetch(query: SearchRepositoriesQuery(query: queryString, count: 10)) { (result, error) in
             if let error = error { print("Error: \(error)"); return }
-            
+            print(result ?? "No result")
             result?.data?.search.edges?.forEach { edge in
                 guard let repository = edge?.node?.asRepository?.fragments.repositoryDetails else { return }
                 print("Name: \(repository.name)")
                 print("Path: \(repository.url)")
-                print("Owner: \(repository.owner.path)")
+                print("ResourcePath: \(repository.owner.resourcePath)")
                 print("Stars: \(repository.stargazers.totalCount)")
                 print("\n")
             }
