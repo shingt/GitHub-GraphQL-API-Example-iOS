@@ -6,8 +6,8 @@ An simple iOS example app of GitHub GraphQL API using Apollo.
 
 ## Requirements
 
-- Swift 3.0
-- Xcode 8.1
+- Swift 4.0
+- Xcode 9.2
 
 ## How to start
 
