@@ -122,7 +122,7 @@ public final class SearchRepositoriesQuery: GraphQLQuery {
         }
 
         public struct Node: GraphQLSelectionSet {
-          public static let possibleTypes = ["Issue", "PullRequest", "Repository", "User", "Organization"]
+          public static let possibleTypes = ["Issue", "PullRequest", "Repository", "User", "Organization", "MarketplaceListing"]
 
           public static let selections: [GraphQLSelection] = [
             GraphQLTypeCase(
@@ -153,6 +153,10 @@ public final class SearchRepositoriesQuery: GraphQLQuery {
 
           public static func makeOrganization() -> Node {
             return Node(snapshot: ["__typename": "Organization"])
+          }
+
+          public static func makeMarketplaceListing() -> Node {
+            return Node(snapshot: ["__typename": "MarketplaceListing"])
           }
 
           public static func makeRepository(name: String, owner: AsRepository.Owner, stargazers: AsRepository.Stargazer, url: String) -> Node {
@@ -230,7 +234,7 @@ public final class SearchRepositoriesQuery: GraphQLQuery {
               }
             }
 
-            /// A list of users who have starred this repository.
+            /// A list of users who have starred this starrable.
             public var stargazers: Stargazer {
               get {
                 return Stargazer(snapshot: snapshot["stargazers"]! as! Snapshot)
@@ -240,7 +244,7 @@ public final class SearchRepositoriesQuery: GraphQLQuery {
               }
             }
 
-            /// The HTTP url for this repository
+            /// The HTTP URL for this repository
             public var url: String {
               get {
                 return snapshot["url"]! as! String
@@ -277,7 +281,7 @@ public final class SearchRepositoriesQuery: GraphQLQuery {
 
               public static let selections: [GraphQLSelection] = [
                 GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-                GraphQLField("path", type: .nonNull(.scalar(String.self))),
+                GraphQLField("resourcePath", type: .nonNull(.scalar(String.self))),
               ]
 
               public var snapshot: Snapshot
@@ -286,12 +290,12 @@ public final class SearchRepositoriesQuery: GraphQLQuery {
                 self.snapshot = snapshot
               }
 
-              public static func makeOrganization(path: String) -> Owner {
-                return Owner(snapshot: ["__typename": "Organization", "path": path])
+              public static func makeOrganization(resourcePath: String) -> Owner {
+                return Owner(snapshot: ["__typename": "Organization", "resourcePath": resourcePath])
               }
 
-              public static func makeUser(path: String) -> Owner {
-                return Owner(snapshot: ["__typename": "User", "path": path])
+              public static func makeUser(resourcePath: String) -> Owner {
+                return Owner(snapshot: ["__typename": "User", "resourcePath": resourcePath])
               }
 
               public var __typename: String {
@@ -303,13 +307,13 @@ public final class SearchRepositoriesQuery: GraphQLQuery {
                 }
               }
 
-              /// The HTTP url for the owner.
-              public var path: String {
+              /// The HTTP URL for the owner.
+              public var resourcePath: String {
                 get {
-                  return snapshot["path"]! as! String
+                  return snapshot["resourcePath"]! as! String
                 }
                 set {
-                  snapshot.updateValue(newValue, forKey: "path")
+                  snapshot.updateValue(newValue, forKey: "resourcePath")
                 }
               }
             }
@@ -360,7 +364,7 @@ public final class SearchRepositoriesQuery: GraphQLQuery {
 
 public struct RepositoryDetails: GraphQLFragment {
   public static let fragmentString =
-    "fragment RepositoryDetails on Repository {\n  __typename\n  name\n  owner {\n    __typename\n    path\n  }\n  stargazers {\n    __typename\n    totalCount\n  }\n  url\n}"
+    "fragment RepositoryDetails on Repository {\n  __typename\n  name\n  owner {\n    __typename\n    resourcePath\n  }\n  stargazers {\n    __typename\n    totalCount\n  }\n  url\n}"
 
   public static let possibleTypes = ["Repository"]
 
@@ -411,7 +415,7 @@ public struct RepositoryDetails: GraphQLFragment {
     }
   }
 
-  /// A list of users who have starred this repository.
+  /// A list of users who have starred this starrable.
   public var stargazers: Stargazer {
     get {
       return Stargazer(snapshot: snapshot["stargazers"]! as! Snapshot)
@@ -421,7 +425,7 @@ public struct RepositoryDetails: GraphQLFragment {
     }
   }
 
-  /// The HTTP url for this repository
+  /// The HTTP URL for this repository
   public var url: String {
     get {
       return snapshot["url"]! as! String
@@ -436,7 +440,7 @@ public struct RepositoryDetails: GraphQLFragment {
 
     public static let selections: [GraphQLSelection] = [
       GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-      GraphQLField("path", type: .nonNull(.scalar(String.self))),
+      GraphQLField("resourcePath", type: .nonNull(.scalar(String.self))),
     ]
 
     public var snapshot: Snapshot
@@ -445,12 +449,12 @@ public struct RepositoryDetails: GraphQLFragment {
       self.snapshot = snapshot
     }
 
-    public static func makeOrganization(path: String) -> Owner {
-      return Owner(snapshot: ["__typename": "Organization", "path": path])
+    public static func makeOrganization(resourcePath: String) -> Owner {
+      return Owner(snapshot: ["__typename": "Organization", "resourcePath": resourcePath])
     }
 
-    public static func makeUser(path: String) -> Owner {
-      return Owner(snapshot: ["__typename": "User", "path": path])
+    public static func makeUser(resourcePath: String) -> Owner {
+      return Owner(snapshot: ["__typename": "User", "resourcePath": resourcePath])
     }
 
     public var __typename: String {
@@ -462,13 +466,13 @@ public struct RepositoryDetails: GraphQLFragment {
       }
     }
 
-    /// The HTTP url for the owner.
-    public var path: String {
+    /// The HTTP URL for the owner.
+    public var resourcePath: String {
       get {
-        return snapshot["path"]! as! String
+        return snapshot["resourcePath"]! as! String
       }
       set {
-        snapshot.updateValue(newValue, forKey: "path")
+        snapshot.updateValue(newValue, forKey: "resourcePath")
       }
     }
   }
