@@ -25,8 +25,9 @@ final class RepositoriesViewController: UITableViewController {
         configuration.requestCachePolicy = .reloadIgnoringLocalCacheData // To avoid 412
         
         let url = URL(string: "https://api.github.com/graphql")!
-        let apollo = ApolloClient(networkTransport: HTTPNetworkTransport(url: url, configuration: configuration))        
-        apollo.fetch(query: SearchRepositoriesQuery(query: queryString, count: 10), completionHandler: { (result, error) in
+        let apollo = ApolloClient(networkTransport: HTTPNetworkTransport(url: url, configuration: configuration))
+
+        apollo.fetch(query: SearchRepositoriesQuery(query: queryString, count: 10), resultHandler: { (result, error) in
             if let error = error { print("Error: \(error)"); return }
             
             result?.data?.search.edges?.forEach { edge in
