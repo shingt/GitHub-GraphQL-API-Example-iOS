@@ -34,7 +34,7 @@ final class RepositoriesViewController: UITableViewController {
                 guard let repository = edge?.node?.asRepository?.fragments.repositoryDetails else { return }
                 print("Name: \(repository.name)")
                 print("Path: \(repository.url)")
-                print("Owner: \(repository.owner.path)")
+                print("Owner: \(repository.owner.resourcePath)")
                 print("Stars: \(repository.stargazers.totalCount)")
                 print("\n")
             }
