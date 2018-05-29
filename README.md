@@ -4,6 +4,10 @@ An simple iOS example app of GitHub GraphQL API using Apollo.
 
 <img src="screenshot.png" width="200">
 
+* Articles
+  * JA: https://qiita.com/shingt/items/ed65c654eb5532eeeda8
+  * EN: https://www.shingt.com/blog/2017/04/02/graphql-on-ios-using-apollo
+
 ## Requirements
 
 - Swift 4.0
