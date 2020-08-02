@@ -1,6 +1,6 @@
 # GitHub-GraphQL-API-Example-iOS
 
-An simple iOS example app of GitHub GraphQL API using Apollo.
+A simple iOS example app of GitHub GraphQL API using Apollo.
 
 <img src="screenshot.png" width="200">
 
