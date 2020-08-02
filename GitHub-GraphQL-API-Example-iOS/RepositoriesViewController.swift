@@ -4,11 +4,18 @@ import Apollo
 private let token = "YOUR_TOKEN"
 
 final class RepositoriesViewController: UITableViewController {
-    var repositories: [SearchRepositoriesQuery.Data.Search.Edge.Node.AsRepository]? {
+    private var repositories: [SearchRepositoriesQuery.Data.Search.Edge.Node.AsRepository]? {
         didSet {
             tableView.reloadData()
         }
     }
+
+    private lazy var apollo: ApolloClient = {
+        let url = URL(string: "https://api.github.com/graphql")!
+        let transport = HTTPNetworkTransport(url: url)
+        transport.delegate = self
+        return ApolloClient(networkTransport: transport)
+    }()
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,28 +26,24 @@ final class RepositoriesViewController: UITableViewController {
       
         let queryString = "GraphQL"
         navigationItem.title = "Query: \(queryString)"
-        
-        let configuration: URLSessionConfiguration = .default
-        configuration.httpAdditionalHeaders = ["Authorization": "Bearer \(token)"]
-        configuration.requestCachePolicy = .reloadIgnoringLocalCacheData // To avoid 412
-        
-        let url = URL(string: "https://api.github.com/graphql")!
-        let apollo = ApolloClient(networkTransport: HTTPNetworkTransport(url: url, configuration: configuration))
 
-        apollo.fetch(query: SearchRepositoriesQuery(query: queryString, count: 10), resultHandler: { (result, error) in
-            if let error = error { print("Error: \(error)"); return }
-            
-            result?.data?.search.edges?.forEach { edge in
-                guard let repository = edge?.node?.asRepository?.fragments.repositoryDetails else { return }
-                print("Name: \(repository.name)")
-                print("Path: \(repository.url)")
-                print("Owner: \(repository.owner.resourcePath)")
-                print("Stars: \(repository.stargazers.totalCount)")
-                print("\n")
+        apollo.fetch(query: SearchRepositoriesQuery(query: queryString, count: 10), cachePolicy: .fetchIgnoringCacheData) { [weak self] result in
+            switch result {
+            case .success(let result):
+                result.data?.search.edges?.forEach { edge in
+                    guard let repository = edge?.node?.asRepository?.fragments.repositoryDetails else { return }
+                    print("Name: \(repository.name)")
+                    print("Path: \(repository.url)")
+                    print("Owner: \(repository.owner.resourcePath)")
+                    print("Stars: \(repository.stargazers.totalCount)")
+                    print("\n")
+                }
+
+                self?.repositories = result.data?.search.edges?.compactMap { $0?.node?.asRepository }
+            case .failure(let error):
+                print("Error: \(error)")
             }
-           
-            self.repositories = result?.data?.search.edges?.flatMap { $0?.node?.asRepository }
-        })
+        }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -62,5 +65,17 @@ final class RepositoriesViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 54.0
+    }
+}
+
+extension RepositoriesViewController: HTTPNetworkTransportPreflightDelegate {
+    func networkTransport(_ networkTransport: HTTPNetworkTransport, shouldSend request: URLRequest) -> Bool {
+        true
+    }
+
+    func networkTransport(_ networkTransport: HTTPNetworkTransport, willSend request: inout URLRequest) {
+          var headers = request.allHTTPHeaderFields ?? [String: String]()
+          headers["Authorization"] = "Bearer \(token)"
+          request.allHTTPHeaderFields = headers
     }
 }

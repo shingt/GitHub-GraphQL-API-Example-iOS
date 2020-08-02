@@ -1,12 +1,32 @@
+// @generated
 //  This file was automatically generated and should not be edited.
 
 import Apollo
+import Foundation
 
 public final class SearchRepositoriesQuery: GraphQLQuery {
-  public static let operationString =
-    "query SearchRepositories($query: String!, $count: Int!) {\n  search(query: $query, type: REPOSITORY, first: $count) {\n    __typename\n    edges {\n      __typename\n      node {\n        __typename\n        ... on Repository {\n          ...RepositoryDetails\n        }\n      }\n    }\n  }\n}"
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    query SearchRepositories($query: String!, $count: Int!) {
+      search(query: $query, type: REPOSITORY, first: $count) {
+        __typename
+        edges {
+          __typename
+          node {
+            __typename
+            ... on Repository {
+              ...RepositoryDetails
+            }
+          }
+        }
+      }
+    }
+    """
 
-  public static var requestString: String { return operationString.appending(RepositoryDetails.fragmentString) }
+  public let operationName: String = "SearchRepositories"
+
+  public var queryDocument: String { return operationDefinition.appending("\n" + RepositoryDetails.fragmentDefinition) }
 
   public var query: String
   public var count: Int
@@ -21,337 +41,223 @@ public final class SearchRepositoriesQuery: GraphQLQuery {
   }
 
   public struct Data: GraphQLSelectionSet {
-    public static let possibleTypes = ["Query"]
+    public static let possibleTypes: [String] = ["Query"]
 
-    public static let selections: [GraphQLSelection] = [
-      GraphQLField("search", arguments: ["query": GraphQLVariable("query"), "type": "REPOSITORY", "first": GraphQLVariable("count")], type: .nonNull(.object(Search.selections))),
-    ]
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("search", arguments: ["query": GraphQLVariable("query"), "type": "REPOSITORY", "first": GraphQLVariable("count")], type: .nonNull(.object(Search.selections))),
+      ]
+    }
 
-    public var snapshot: Snapshot
+    public private(set) var resultMap: ResultMap
 
-    public init(snapshot: Snapshot) {
-      self.snapshot = snapshot
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
     }
 
     public init(search: Search) {
-      self.init(snapshot: ["__typename": "Query", "search": search.snapshot])
+      self.init(unsafeResultMap: ["__typename": "Query", "search": search.resultMap])
     }
 
     /// Perform a search across resources.
     public var search: Search {
       get {
-        return Search(snapshot: snapshot["search"]! as! Snapshot)
+        return Search(unsafeResultMap: resultMap["search"]! as! ResultMap)
       }
       set {
-        snapshot.updateValue(newValue.snapshot, forKey: "search")
+        resultMap.updateValue(newValue.resultMap, forKey: "search")
       }
     }
 
     public struct Search: GraphQLSelectionSet {
-      public static let possibleTypes = ["SearchResultItemConnection"]
+      public static let possibleTypes: [String] = ["SearchResultItemConnection"]
 
-      public static let selections: [GraphQLSelection] = [
-        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-        GraphQLField("edges", type: .list(.object(Edge.selections))),
-      ]
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("edges", type: .list(.object(Edge.selections))),
+        ]
+      }
 
-      public var snapshot: Snapshot
+      public private(set) var resultMap: ResultMap
 
-      public init(snapshot: Snapshot) {
-        self.snapshot = snapshot
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
       }
 
       public init(edges: [Edge?]? = nil) {
-        self.init(snapshot: ["__typename": "SearchResultItemConnection", "edges": edges.flatMap { (value: [Edge?]) -> [Snapshot?] in value.map { (value: Edge?) -> Snapshot? in value.flatMap { (value: Edge) -> Snapshot in value.snapshot } } }])
+        self.init(unsafeResultMap: ["__typename": "SearchResultItemConnection", "edges": edges.flatMap { (value: [Edge?]) -> [ResultMap?] in value.map { (value: Edge?) -> ResultMap? in value.flatMap { (value: Edge) -> ResultMap in value.resultMap } } }])
       }
 
       public var __typename: String {
         get {
-          return snapshot["__typename"]! as! String
+          return resultMap["__typename"]! as! String
         }
         set {
-          snapshot.updateValue(newValue, forKey: "__typename")
+          resultMap.updateValue(newValue, forKey: "__typename")
         }
       }
 
       /// A list of edges.
       public var edges: [Edge?]? {
         get {
-          return (snapshot["edges"] as? [Snapshot?]).flatMap { (value: [Snapshot?]) -> [Edge?] in value.map { (value: Snapshot?) -> Edge? in value.flatMap { (value: Snapshot) -> Edge in Edge(snapshot: value) } } }
+          return (resultMap["edges"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [Edge?] in value.map { (value: ResultMap?) -> Edge? in value.flatMap { (value: ResultMap) -> Edge in Edge(unsafeResultMap: value) } } }
         }
         set {
-          snapshot.updateValue(newValue.flatMap { (value: [Edge?]) -> [Snapshot?] in value.map { (value: Edge?) -> Snapshot? in value.flatMap { (value: Edge) -> Snapshot in value.snapshot } } }, forKey: "edges")
+          resultMap.updateValue(newValue.flatMap { (value: [Edge?]) -> [ResultMap?] in value.map { (value: Edge?) -> ResultMap? in value.flatMap { (value: Edge) -> ResultMap in value.resultMap } } }, forKey: "edges")
         }
       }
 
       public struct Edge: GraphQLSelectionSet {
-        public static let possibleTypes = ["SearchResultItemEdge"]
+        public static let possibleTypes: [String] = ["SearchResultItemEdge"]
 
-        public static let selections: [GraphQLSelection] = [
-          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("node", type: .object(Node.selections)),
-        ]
+        public static var selections: [GraphQLSelection] {
+          return [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("node", type: .object(Node.selections)),
+          ]
+        }
 
-        public var snapshot: Snapshot
+        public private(set) var resultMap: ResultMap
 
-        public init(snapshot: Snapshot) {
-          self.snapshot = snapshot
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
         }
 
         public init(node: Node? = nil) {
-          self.init(snapshot: ["__typename": "SearchResultItemEdge", "node": node.flatMap { (value: Node) -> Snapshot in value.snapshot }])
+          self.init(unsafeResultMap: ["__typename": "SearchResultItemEdge", "node": node.flatMap { (value: Node) -> ResultMap in value.resultMap }])
         }
 
         public var __typename: String {
           get {
-            return snapshot["__typename"]! as! String
+            return resultMap["__typename"]! as! String
           }
           set {
-            snapshot.updateValue(newValue, forKey: "__typename")
+            resultMap.updateValue(newValue, forKey: "__typename")
           }
         }
 
         /// The item at the end of the edge.
         public var node: Node? {
           get {
-            return (snapshot["node"] as? Snapshot).flatMap { Node(snapshot: $0) }
+            return (resultMap["node"] as? ResultMap).flatMap { Node(unsafeResultMap: $0) }
           }
           set {
-            snapshot.updateValue(newValue?.snapshot, forKey: "node")
+            resultMap.updateValue(newValue?.resultMap, forKey: "node")
           }
         }
 
         public struct Node: GraphQLSelectionSet {
-          public static let possibleTypes = ["Issue", "PullRequest", "Repository", "User", "Organization", "MarketplaceListing"]
+          public static let possibleTypes: [String] = ["App", "Issue", "MarketplaceListing", "Organization", "PullRequest", "Repository", "User"]
 
-          public static let selections: [GraphQLSelection] = [
-            GraphQLTypeCase(
-              variants: ["Repository": AsRepository.selections],
-              default: [
-                GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-              ]
-            )
-          ]
+          public static var selections: [GraphQLSelection] {
+            return [
+              GraphQLTypeCase(
+                variants: ["Repository": AsRepository.selections],
+                default: [
+                  GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+                ]
+              )
+            ]
+          }
 
-          public var snapshot: Snapshot
+          public private(set) var resultMap: ResultMap
 
-          public init(snapshot: Snapshot) {
-            self.snapshot = snapshot
+          public init(unsafeResultMap: ResultMap) {
+            self.resultMap = unsafeResultMap
+          }
+
+          public static func makeApp() -> Node {
+            return Node(unsafeResultMap: ["__typename": "App"])
           }
 
           public static func makeIssue() -> Node {
-            return Node(snapshot: ["__typename": "Issue"])
-          }
-
-          public static func makePullRequest() -> Node {
-            return Node(snapshot: ["__typename": "PullRequest"])
-          }
-
-          public static func makeUser() -> Node {
-            return Node(snapshot: ["__typename": "User"])
-          }
-
-          public static func makeOrganization() -> Node {
-            return Node(snapshot: ["__typename": "Organization"])
+            return Node(unsafeResultMap: ["__typename": "Issue"])
           }
 
           public static func makeMarketplaceListing() -> Node {
-            return Node(snapshot: ["__typename": "MarketplaceListing"])
+            return Node(unsafeResultMap: ["__typename": "MarketplaceListing"])
           }
 
-          public static func makeRepository(name: String, owner: AsRepository.Owner, stargazers: AsRepository.Stargazer, url: String) -> Node {
-            return Node(snapshot: ["__typename": "Repository", "name": name, "owner": owner.snapshot, "stargazers": stargazers.snapshot, "url": url])
+          public static func makeOrganization() -> Node {
+            return Node(unsafeResultMap: ["__typename": "Organization"])
+          }
+
+          public static func makePullRequest() -> Node {
+            return Node(unsafeResultMap: ["__typename": "PullRequest"])
+          }
+
+          public static func makeUser() -> Node {
+            return Node(unsafeResultMap: ["__typename": "User"])
           }
 
           public var __typename: String {
             get {
-              return snapshot["__typename"]! as! String
+              return resultMap["__typename"]! as! String
             }
             set {
-              snapshot.updateValue(newValue, forKey: "__typename")
+              resultMap.updateValue(newValue, forKey: "__typename")
             }
           }
 
           public var asRepository: AsRepository? {
             get {
               if !AsRepository.possibleTypes.contains(__typename) { return nil }
-              return AsRepository(snapshot: snapshot)
+              return AsRepository(unsafeResultMap: resultMap)
             }
             set {
               guard let newValue = newValue else { return }
-              snapshot = newValue.snapshot
+              resultMap = newValue.resultMap
             }
           }
 
           public struct AsRepository: GraphQLSelectionSet {
-            public static let possibleTypes = ["Repository"]
+            public static let possibleTypes: [String] = ["Repository"]
 
-            public static let selections: [GraphQLSelection] = [
-              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-              GraphQLField("name", type: .nonNull(.scalar(String.self))),
-              GraphQLField("owner", type: .nonNull(.object(Owner.selections))),
-              GraphQLField("stargazers", type: .nonNull(.object(Stargazer.selections))),
-              GraphQLField("url", type: .nonNull(.scalar(String.self))),
-            ]
-
-            public var snapshot: Snapshot
-
-            public init(snapshot: Snapshot) {
-              self.snapshot = snapshot
+            public static var selections: [GraphQLSelection] {
+              return [
+                GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+                GraphQLFragmentSpread(RepositoryDetails.self),
+              ]
             }
 
-            public init(name: String, owner: Owner, stargazers: Stargazer, url: String) {
-              self.init(snapshot: ["__typename": "Repository", "name": name, "owner": owner.snapshot, "stargazers": stargazers.snapshot, "url": url])
+            public private(set) var resultMap: ResultMap
+
+            public init(unsafeResultMap: ResultMap) {
+              self.resultMap = unsafeResultMap
             }
 
             public var __typename: String {
               get {
-                return snapshot["__typename"]! as! String
+                return resultMap["__typename"]! as! String
               }
               set {
-                snapshot.updateValue(newValue, forKey: "__typename")
-              }
-            }
-
-            /// The name of the repository.
-            public var name: String {
-              get {
-                return snapshot["name"]! as! String
-              }
-              set {
-                snapshot.updateValue(newValue, forKey: "name")
-              }
-            }
-
-            /// The User owner of the repository.
-            public var owner: Owner {
-              get {
-                return Owner(snapshot: snapshot["owner"]! as! Snapshot)
-              }
-              set {
-                snapshot.updateValue(newValue.snapshot, forKey: "owner")
-              }
-            }
-
-            /// A list of users who have starred this starrable.
-            public var stargazers: Stargazer {
-              get {
-                return Stargazer(snapshot: snapshot["stargazers"]! as! Snapshot)
-              }
-              set {
-                snapshot.updateValue(newValue.snapshot, forKey: "stargazers")
-              }
-            }
-
-            /// The HTTP URL for this repository
-            public var url: String {
-              get {
-                return snapshot["url"]! as! String
-              }
-              set {
-                snapshot.updateValue(newValue, forKey: "url")
+                resultMap.updateValue(newValue, forKey: "__typename")
               }
             }
 
             public var fragments: Fragments {
               get {
-                return Fragments(snapshot: snapshot)
+                return Fragments(unsafeResultMap: resultMap)
               }
               set {
-                snapshot += newValue.snapshot
+                resultMap += newValue.resultMap
               }
             }
 
             public struct Fragments {
-              public var snapshot: Snapshot
+              public private(set) var resultMap: ResultMap
+
+              public init(unsafeResultMap: ResultMap) {
+                self.resultMap = unsafeResultMap
+              }
 
               public var repositoryDetails: RepositoryDetails {
                 get {
-                  return RepositoryDetails(snapshot: snapshot)
+                  return RepositoryDetails(unsafeResultMap: resultMap)
                 }
                 set {
-                  snapshot += newValue.snapshot
-                }
-              }
-            }
-
-            public struct Owner: GraphQLSelectionSet {
-              public static let possibleTypes = ["Organization", "User"]
-
-              public static let selections: [GraphQLSelection] = [
-                GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-                GraphQLField("resourcePath", type: .nonNull(.scalar(String.self))),
-              ]
-
-              public var snapshot: Snapshot
-
-              public init(snapshot: Snapshot) {
-                self.snapshot = snapshot
-              }
-
-              public static func makeOrganization(resourcePath: String) -> Owner {
-                return Owner(snapshot: ["__typename": "Organization", "resourcePath": resourcePath])
-              }
-
-              public static func makeUser(resourcePath: String) -> Owner {
-                return Owner(snapshot: ["__typename": "User", "resourcePath": resourcePath])
-              }
-
-              public var __typename: String {
-                get {
-                  return snapshot["__typename"]! as! String
-                }
-                set {
-                  snapshot.updateValue(newValue, forKey: "__typename")
-                }
-              }
-
-              /// The HTTP URL for the owner.
-              public var resourcePath: String {
-                get {
-                  return snapshot["resourcePath"]! as! String
-                }
-                set {
-                  snapshot.updateValue(newValue, forKey: "resourcePath")
-                }
-              }
-            }
-
-            public struct Stargazer: GraphQLSelectionSet {
-              public static let possibleTypes = ["StargazerConnection"]
-
-              public static let selections: [GraphQLSelection] = [
-                GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-                GraphQLField("totalCount", type: .nonNull(.scalar(Int.self))),
-              ]
-
-              public var snapshot: Snapshot
-
-              public init(snapshot: Snapshot) {
-                self.snapshot = snapshot
-              }
-
-              public init(totalCount: Int) {
-                self.init(snapshot: ["__typename": "StargazerConnection", "totalCount": totalCount])
-              }
-
-              public var __typename: String {
-                get {
-                  return snapshot["__typename"]! as! String
-                }
-                set {
-                  snapshot.updateValue(newValue, forKey: "__typename")
-                }
-              }
-
-              /// Identifies the total count of items in the connection.
-              public var totalCount: Int {
-                get {
-                  return snapshot["totalCount"]! as! Int
-                }
-                set {
-                  snapshot.updateValue(newValue, forKey: "totalCount")
+                  resultMap += newValue.resultMap
                 }
               }
             }
@@ -363,154 +269,175 @@ public final class SearchRepositoriesQuery: GraphQLQuery {
 }
 
 public struct RepositoryDetails: GraphQLFragment {
-  public static let fragmentString =
-    "fragment RepositoryDetails on Repository {\n  __typename\n  name\n  owner {\n    __typename\n    resourcePath\n  }\n  stargazers {\n    __typename\n    totalCount\n  }\n  url\n}"
+  /// The raw GraphQL definition of this fragment.
+  public static let fragmentDefinition: String =
+    """
+    fragment RepositoryDetails on Repository {
+      __typename
+      name
+      owner {
+        __typename
+        resourcePath
+      }
+      stargazers {
+        __typename
+        totalCount
+      }
+      url
+    }
+    """
 
-  public static let possibleTypes = ["Repository"]
+  public static let possibleTypes: [String] = ["Repository"]
 
-  public static let selections: [GraphQLSelection] = [
-    GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-    GraphQLField("name", type: .nonNull(.scalar(String.self))),
-    GraphQLField("owner", type: .nonNull(.object(Owner.selections))),
-    GraphQLField("stargazers", type: .nonNull(.object(Stargazer.selections))),
-    GraphQLField("url", type: .nonNull(.scalar(String.self))),
-  ]
+  public static var selections: [GraphQLSelection] {
+    return [
+      GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+      GraphQLField("name", type: .nonNull(.scalar(String.self))),
+      GraphQLField("owner", type: .nonNull(.object(Owner.selections))),
+      GraphQLField("stargazers", type: .nonNull(.object(Stargazer.selections))),
+      GraphQLField("url", type: .nonNull(.scalar(String.self))),
+    ]
+  }
 
-  public var snapshot: Snapshot
+  public private(set) var resultMap: ResultMap
 
-  public init(snapshot: Snapshot) {
-    self.snapshot = snapshot
+  public init(unsafeResultMap: ResultMap) {
+    self.resultMap = unsafeResultMap
   }
 
   public init(name: String, owner: Owner, stargazers: Stargazer, url: String) {
-    self.init(snapshot: ["__typename": "Repository", "name": name, "owner": owner.snapshot, "stargazers": stargazers.snapshot, "url": url])
+    self.init(unsafeResultMap: ["__typename": "Repository", "name": name, "owner": owner.resultMap, "stargazers": stargazers.resultMap, "url": url])
   }
 
   public var __typename: String {
     get {
-      return snapshot["__typename"]! as! String
+      return resultMap["__typename"]! as! String
     }
     set {
-      snapshot.updateValue(newValue, forKey: "__typename")
+      resultMap.updateValue(newValue, forKey: "__typename")
     }
   }
 
   /// The name of the repository.
   public var name: String {
     get {
-      return snapshot["name"]! as! String
+      return resultMap["name"]! as! String
     }
     set {
-      snapshot.updateValue(newValue, forKey: "name")
+      resultMap.updateValue(newValue, forKey: "name")
     }
   }
 
   /// The User owner of the repository.
   public var owner: Owner {
     get {
-      return Owner(snapshot: snapshot["owner"]! as! Snapshot)
+      return Owner(unsafeResultMap: resultMap["owner"]! as! ResultMap)
     }
     set {
-      snapshot.updateValue(newValue.snapshot, forKey: "owner")
+      resultMap.updateValue(newValue.resultMap, forKey: "owner")
     }
   }
 
   /// A list of users who have starred this starrable.
   public var stargazers: Stargazer {
     get {
-      return Stargazer(snapshot: snapshot["stargazers"]! as! Snapshot)
+      return Stargazer(unsafeResultMap: resultMap["stargazers"]! as! ResultMap)
     }
     set {
-      snapshot.updateValue(newValue.snapshot, forKey: "stargazers")
+      resultMap.updateValue(newValue.resultMap, forKey: "stargazers")
     }
   }
 
   /// The HTTP URL for this repository
   public var url: String {
     get {
-      return snapshot["url"]! as! String
+      return resultMap["url"]! as! String
     }
     set {
-      snapshot.updateValue(newValue, forKey: "url")
+      resultMap.updateValue(newValue, forKey: "url")
     }
   }
 
   public struct Owner: GraphQLSelectionSet {
-    public static let possibleTypes = ["Organization", "User"]
+    public static let possibleTypes: [String] = ["Organization", "User"]
 
-    public static let selections: [GraphQLSelection] = [
-      GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-      GraphQLField("resourcePath", type: .nonNull(.scalar(String.self))),
-    ]
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("resourcePath", type: .nonNull(.scalar(String.self))),
+      ]
+    }
 
-    public var snapshot: Snapshot
+    public private(set) var resultMap: ResultMap
 
-    public init(snapshot: Snapshot) {
-      self.snapshot = snapshot
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
     }
 
     public static func makeOrganization(resourcePath: String) -> Owner {
-      return Owner(snapshot: ["__typename": "Organization", "resourcePath": resourcePath])
+      return Owner(unsafeResultMap: ["__typename": "Organization", "resourcePath": resourcePath])
     }
 
     public static func makeUser(resourcePath: String) -> Owner {
-      return Owner(snapshot: ["__typename": "User", "resourcePath": resourcePath])
+      return Owner(unsafeResultMap: ["__typename": "User", "resourcePath": resourcePath])
     }
 
     public var __typename: String {
       get {
-        return snapshot["__typename"]! as! String
+        return resultMap["__typename"]! as! String
       }
       set {
-        snapshot.updateValue(newValue, forKey: "__typename")
+        resultMap.updateValue(newValue, forKey: "__typename")
       }
     }
 
     /// The HTTP URL for the owner.
     public var resourcePath: String {
       get {
-        return snapshot["resourcePath"]! as! String
+        return resultMap["resourcePath"]! as! String
       }
       set {
-        snapshot.updateValue(newValue, forKey: "resourcePath")
+        resultMap.updateValue(newValue, forKey: "resourcePath")
       }
     }
   }
 
   public struct Stargazer: GraphQLSelectionSet {
-    public static let possibleTypes = ["StargazerConnection"]
+    public static let possibleTypes: [String] = ["StargazerConnection"]
 
-    public static let selections: [GraphQLSelection] = [
-      GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-      GraphQLField("totalCount", type: .nonNull(.scalar(Int.self))),
-    ]
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("totalCount", type: .nonNull(.scalar(Int.self))),
+      ]
+    }
 
-    public var snapshot: Snapshot
+    public private(set) var resultMap: ResultMap
 
-    public init(snapshot: Snapshot) {
-      self.snapshot = snapshot
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
     }
 
     public init(totalCount: Int) {
-      self.init(snapshot: ["__typename": "StargazerConnection", "totalCount": totalCount])
+      self.init(unsafeResultMap: ["__typename": "StargazerConnection", "totalCount": totalCount])
     }
 
     public var __typename: String {
       get {
-        return snapshot["__typename"]! as! String
+        return resultMap["__typename"]! as! String
       }
       set {
-        snapshot.updateValue(newValue, forKey: "__typename")
+        resultMap.updateValue(newValue, forKey: "__typename")
       }
     }
 
     /// Identifies the total count of items in the connection.
     public var totalCount: Int {
       get {
-        return snapshot["totalCount"]! as! Int
+        return resultMap["totalCount"]! as! Int
       }
       set {
-        snapshot.updateValue(newValue, forKey: "totalCount")
+        resultMap.updateValue(newValue, forKey: "totalCount")
       }
     }
   }

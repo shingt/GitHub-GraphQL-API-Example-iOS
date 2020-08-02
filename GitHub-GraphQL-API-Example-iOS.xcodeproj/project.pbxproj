@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,12 +11,12 @@
 		120103761DFBE26E00E8128E /* RepositoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120103751DFBE26E00E8128E /* RepositoriesViewController.swift */; };
 		1201037B1DFBE26E00E8128E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1201037A1DFBE26E00E8128E /* Assets.xcassets */; };
 		1201037E1DFBE26E00E8128E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1201037C1DFBE26E00E8128E /* LaunchScreen.storyboard */; };
-		120103871DFBF0AD00E8128E /* Apollo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 120103861DFBF0AD00E8128E /* Apollo.framework */; };
 		1201038B1DFBF28200E8128E /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1201038A1DFBF28200E8128E /* API.swift */; };
 		12A3242C1DFE56EC00D905E7 /* RepositoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A3242B1DFE56EC00D905E7 /* RepositoryCell.swift */; };
 		12A3242E1DFF499800D905E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12A3242D1DFF499800D905E7 /* Main.storyboard */; };
 		12A324301E0215E400D905E7 /* RepositoryDetails.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 12A3242F1E0215E400D905E7 /* RepositoryDetails.graphql */; };
 		12F01AA41DFD05CD00EB0547 /* RepositoriesViewController.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 12F01AA31DFD05CD00EB0547 /* RepositoriesViewController.graphql */; };
+		DDF8A0B224D643AB0065A795 /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = DDF8A0B124D643AB0065A795 /* Apollo */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,7 +26,6 @@
 		1201037A1DFBE26E00E8128E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1201037D1DFBE26E00E8128E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1201037F1DFBE26E00E8128E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		120103861DFBF0AD00E8128E /* Apollo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Apollo.framework; path = Carthage/Build/iOS/Apollo.framework; sourceTree = "<group>"; };
 		1201038A1DFBF28200E8128E /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		12A3242B1DFE56EC00D905E7 /* RepositoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryCell.swift; sourceTree = "<group>"; };
 		12A3242D1DFF499800D905E7 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -39,7 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				120103871DFBF0AD00E8128E /* Apollo.framework in Frameworks */,
+				DDF8A0B224D643AB0065A795 /* Apollo in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,7 +82,6 @@
 		120103851DFBF0AD00E8128E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				120103861DFBF0AD00E8128E /* Apollo.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -106,6 +104,9 @@
 			dependencies = (
 			);
 			name = "GitHub-GraphQL-API-Example-iOS";
+			packageProductDependencies = (
+				DDF8A0B124D643AB0065A795 /* Apollo */,
+			);
 			productName = "GitHub-GraphQL-API-Example-iOS";
 			productReference = 120103701DFBE26E00E8128E /* GitHub-GraphQL-API-Example-iOS.app */;
 			productType = "com.apple.product-type.application";
@@ -132,10 +133,14 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
 			mainGroup = 120103671DFBE26E00E8128E;
+			packageReferences = (
+				DDF8A0B024D643AB0065A795 /* XCRemoteSwiftPackageReference "apollo-ios" */,
+			);
 			productRefGroup = 120103711DFBE26E00E8128E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -167,13 +172,13 @@
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Apollo.framework",
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "
+";
 		};
 		120103891DFBF22000E8128E /* Generate Apollo GraphQL API */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -187,7 +192,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "APOLLO_FRAMEWORK_PATH=$(eval find $FRAMEWORK_SEARCH_PATHS -name \"Apollo.framework\" -maxdepth 1)\n\nif [ -z \"$APOLLO_FRAMEWORK_PATH\" ]; then\necho \"error: Couldn't find Apollo.framework in FRAMEWORK_SEARCH_PATHS; make sure to add the framework to your project.\"\nexit 1\nfi\n\ncd ${SRCROOT}/${TARGET_NAME}\n$APOLLO_FRAMEWORK_PATH/check-and-run-apollo-codegen.sh generate $(find . -name '*.graphql') --schema schema.json --output API.swift";
+			shellScript = "# Go to the build root and search up the chain to find the Derived Data Path where the source packages are checked out.\nDERIVED_DATA_CANDIDATE=\"${BUILD_ROOT}\"\n\nwhile ! [ -d \"${DERIVED_DATA_CANDIDATE}/SourcePackages\" ]; do\n  if [ \"${DERIVED_DATA_CANDIDATE}\" = / ]; then\n    echo >&2 \"error: Unable to locate SourcePackages directory from BUILD_ROOT: '${BUILD_ROOT}'\"\n    exit 1\n  fi\n\n  DERIVED_DATA_CANDIDATE=\"$(dirname \"${DERIVED_DATA_CANDIDATE}\")\"\ndone\n\n# Grab a reference to the directory where scripts are checked out\nSCRIPT_PATH=\"${DERIVED_DATA_CANDIDATE}/SourcePackages/checkouts/apollo-ios/scripts\"\n\nif [ -z \"${SCRIPT_PATH}\" ]; then\n    echo >&2 \"error: Couldn't find the CLI script in your checked out SPM packages; make sure to add the framework to your project.\"\n    exit 1\nfi\n\ncd \"${SRCROOT}/${TARGET_NAME}\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --includes=./**/*.graphql --localSchemaFile=\"schema.json\" API.swift\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -305,7 +310,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -317,15 +323,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 9527BZ5WE5;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "GitHub-GraphQL-API-Example-iOS/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.shingt.GitHub-GraphQL-API-Example-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -334,15 +340,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 9527BZ5WE5;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "GitHub-GraphQL-API-Example-iOS/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.shingt.GitHub-GraphQL-API-Example-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -368,6 +374,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DDF8A0B024D643AB0065A795 /* XCRemoteSwiftPackageReference "apollo-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apollographql/apollo-ios.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 0.30.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DDF8A0B124D643AB0065A795 /* Apollo */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DDF8A0B024D643AB0065A795 /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			productName = Apollo;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 120103681DFBE26E00E8128E /* Project object */;
 }
