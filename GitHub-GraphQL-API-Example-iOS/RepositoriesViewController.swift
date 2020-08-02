@@ -4,11 +4,18 @@ import Apollo
 private let token = "YOUR_TOKEN"
 
 final class RepositoriesViewController: UITableViewController {
-    var repositories: [SearchRepositoriesQuery.Data.Search.Edge.Node.AsRepository]? {
+    private var repositories: [SearchRepositoriesQuery.Data.Search.Edge.Node.AsRepository]? {
         didSet {
             tableView.reloadData()
         }
     }
+
+    private lazy var apollo: ApolloClient = {
+        let url = URL(string: "https://api.github.com/graphql")!
+        let transport = HTTPNetworkTransport(url: url)
+        transport.delegate = self
+        return ApolloClient(networkTransport: transport)
+    }()
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,11 +26,6 @@ final class RepositoriesViewController: UITableViewController {
       
         let queryString = "GraphQL"
         navigationItem.title = "Query: \(queryString)"
-        
-        let url = URL(string: "https://api.github.com/graphql")!
-        let transport = HTTPNetworkTransport(url: url)
-        transport.delegate = self
-        let apollo = ApolloClient(networkTransport: transport)
 
         apollo.fetch(query: SearchRepositoriesQuery(query: queryString, count: 10), cachePolicy: .fetchIgnoringCacheData) { [weak self] result in
             switch result {
