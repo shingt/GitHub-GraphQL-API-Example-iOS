@@ -1,11 +1,11 @@
 # GitHub-GraphQL-API-Example-iOS
 
-A simple iOS example app of GitHub GraphQL API using [Apollo iOS](https://github.com/apollographql/apollo-ios).
+An example iOS app that uses [Apollo iOS](https://github.com/apollographql/apollo-ios) to hit GitHub GraphQL API.
 
 <img src="screenshot.png" width="200">
 
-* Article (deprecated)
-  * https://www.shingt.com/blog/2017/04/02/graphql-on-ios-using-apollo
+* Article (deprecated as it's for older version of Apollo)
+  * https://shingt.com/blog/2017-04-02-graphql-on-ios-using-apollo/
 
 ## Requirements
 
