@@ -11,9 +11,8 @@ final class RepositoriesViewController: UITableViewController {
     }
 
     private lazy var apollo: ApolloClient = {
-        let provider = LegacyInterceptorProvider()
         let network = RequestChainNetworkTransport(
-            interceptorProvider: provider,
+            interceptorProvider: LegacyInterceptorProvider(),
             endpointURL: URL(string: "https://api.github.com/graphql")!,
             additionalHeaders: [
                 "Authorization": "Bearer \(token)"
