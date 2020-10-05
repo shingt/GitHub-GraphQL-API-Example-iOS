@@ -7,10 +7,10 @@ An example iOS app that uses [Apollo iOS](https://github.com/apollographql/apoll
 * Article (deprecated as it's for older version of Apollo)
   * https://shingt.com/blog/2017-04-02-graphql-on-ios-using-apollo/
 
-## Requirements
+## Environments
 
-- Xcode 11.5
-- Swift 5.2
+- Xcode 12.0.1
+- Swift 5.3
 
 ## How to start
 
