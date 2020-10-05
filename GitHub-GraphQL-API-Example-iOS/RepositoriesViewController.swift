@@ -11,10 +11,15 @@ final class RepositoriesViewController: UITableViewController {
     }
 
     private lazy var apollo: ApolloClient = {
-        let url = URL(string: "https://api.github.com/graphql")!
-        let transport = HTTPNetworkTransport(url: url)
-        transport.delegate = self
-        return ApolloClient(networkTransport: transport)
+        let provider = LegacyInterceptorProvider()
+        let network = RequestChainNetworkTransport(
+            interceptorProvider: provider,
+            endpointURL: URL(string: "https://api.github.com/graphql")!,
+            additionalHeaders: [
+                "Authorization": "Bearer \(token)"
+            ]
+        )
+        return .init(networkTransport: network)
     }()
    
     override func viewWillAppear(_ animated: Bool) {
@@ -61,17 +66,5 @@ final class RepositoriesViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 54.0
-    }
-}
-
-extension RepositoriesViewController: HTTPNetworkTransportPreflightDelegate {
-    func networkTransport(_ networkTransport: HTTPNetworkTransport, shouldSend request: URLRequest) -> Bool {
-        true
-    }
-
-    func networkTransport(_ networkTransport: HTTPNetworkTransport, willSend request: inout URLRequest) {
-          var headers = request.allHTTPHeaderFields ?? [String: String]()
-          headers["Authorization"] = "Bearer \(token)"
-          request.allHTTPHeaderFields = headers
     }
 }
