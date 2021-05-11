@@ -26,7 +26,11 @@ public final class SearchRepositoriesQuery: GraphQLQuery {
 
   public let operationName: String = "SearchRepositories"
 
-  public var queryDocument: String { return operationDefinition.appending("\n" + RepositoryDetails.fragmentDefinition) }
+  public var queryDocument: String {
+    var document: String = operationDefinition
+    document.append("\n" + RepositoryDetails.fragmentDefinition)
+    return document
+  }
 
   public var query: String
   public var count: Int
