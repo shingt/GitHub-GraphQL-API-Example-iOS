@@ -15,5 +15,5 @@ An example iOS app that uses [Apollo iOS](https://github.com/apollographql/apoll
 ## How to start
 
 - Open `GitHub-GraphQL-API-Example-iOS.xcodeproj`
-- Replace `YOUR_TOKEN` in `RepositoriesViewController` with your private access token on GitHub and build!
+- Replace `YOUR_TOKEN` in `RepositoriesViewController` with your private access token on GitHub and build! (Make sure not to commit your token.)
 
