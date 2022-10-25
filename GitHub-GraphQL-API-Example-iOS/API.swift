@@ -16,6 +16,7 @@ public final class SearchRepositoriesQuery: GraphQLQuery {
           node {
             __typename
             ... on Repository {
+              __typename
               ...RepositoryDetails
             }
           }
@@ -220,6 +221,7 @@ public final class SearchRepositoriesQuery: GraphQLQuery {
 
             public static var selections: [GraphQLSelection] {
               return [
+                GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
                 GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
                 GraphQLFragmentSpread(RepositoryDetails.self),
               ]
