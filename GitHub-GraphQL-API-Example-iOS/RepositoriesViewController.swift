@@ -3,7 +3,7 @@ import Apollo
 
 private let token = "YOUR_TOKEN"
 
-class TokenAddingInterceptor: ApolloInterceptor {
+final class TokenAddingInterceptor: ApolloInterceptor {
     func interceptAsync<Operation: GraphQLOperation>(
         chain: RequestChain,
         request: HTTPRequest<Operation>,
@@ -14,11 +14,21 @@ class TokenAddingInterceptor: ApolloInterceptor {
     }
 }
 
-class NetworkInterceptorProvider: LegacyInterceptorProvider {
-    override func interceptors<Operation: GraphQLOperation>(for operation: Operation) -> [ApolloInterceptor] {
-        var interceptors = super.interceptors(for: operation)
-        interceptors.insert(TokenAddingInterceptor(), at: 0)
-        return interceptors
+final class NetworkInterceptorProvider: InterceptorProvider {
+    private let client: URLSessionClient
+    private let store: ApolloStore
+
+    init(client: URLSessionClient, store: ApolloStore) {
+        self.client = client
+        self.store = store
+    }
+
+    func interceptors<Operation>(for operation: Operation) -> [ApolloInterceptor] where Operation : GraphQLOperation {
+        [
+            TokenAddingInterceptor(),
+            NetworkFetchInterceptor(client: self.client),
+            JSONResponseParsingInterceptor(cacheKeyForObject: self.store.cacheKeyForObject),
+        ]
     }
 }
 
