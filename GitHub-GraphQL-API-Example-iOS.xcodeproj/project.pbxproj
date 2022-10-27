@@ -12,11 +12,11 @@
 		1201037B1DFBE26E00E8128E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1201037A1DFBE26E00E8128E /* Assets.xcassets */; };
 		1201037E1DFBE26E00E8128E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1201037C1DFBE26E00E8128E /* LaunchScreen.storyboard */; };
 		1201038B1DFBF28200E8128E /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1201038A1DFBF28200E8128E /* API.swift */; };
+		1232C398290ADB4E0034F8C0 /* Dependencies in Frameworks */ = {isa = PBXBuildFile; productRef = 1232C397290ADB4E0034F8C0 /* Dependencies */; };
 		12A3242C1DFE56EC00D905E7 /* RepositoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A3242B1DFE56EC00D905E7 /* RepositoryCell.swift */; };
 		12A3242E1DFF499800D905E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12A3242D1DFF499800D905E7 /* Main.storyboard */; };
 		12A324301E0215E400D905E7 /* RepositoryDetails.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 12A3242F1E0215E400D905E7 /* RepositoryDetails.graphql */; };
 		12F01AA41DFD05CD00EB0547 /* RepositoriesViewController.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 12F01AA31DFD05CD00EB0547 /* RepositoriesViewController.graphql */; };
-		DDF8A0B224D643AB0065A795 /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = DDF8A0B124D643AB0065A795 /* Apollo */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,7 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DDF8A0B224D643AB0065A795 /* Apollo in Frameworks */,
+				1232C398290ADB4E0034F8C0 /* Dependencies in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,7 +105,7 @@
 			);
 			name = "GitHub-GraphQL-API-Example-iOS";
 			packageProductDependencies = (
-				DDF8A0B124D643AB0065A795 /* Apollo */,
+				1232C397290ADB4E0034F8C0 /* Dependencies */,
 			);
 			productName = "GitHub-GraphQL-API-Example-iOS";
 			productReference = 120103701DFBE26E00E8128E /* GitHub-GraphQL-API-Example-iOS.app */;
@@ -138,7 +138,6 @@
 			);
 			mainGroup = 120103671DFBE26E00E8128E;
 			packageReferences = (
-				DDF8A0B024D643AB0065A795 /* XCRemoteSwiftPackageReference "apollo-ios" */,
 			);
 			productRefGroup = 120103711DFBE26E00E8128E /* Products */;
 			projectDirPath = "";
@@ -396,22 +395,10 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		DDF8A0B024D643AB0065A795 /* XCRemoteSwiftPackageReference "apollo-ios" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/apollographql/apollo-ios.git";
-			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 1.0.2;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
-		DDF8A0B124D643AB0065A795 /* Apollo */ = {
+		1232C397290ADB4E0034F8C0 /* Dependencies */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = DDF8A0B024D643AB0065A795 /* XCRemoteSwiftPackageReference "apollo-ios" */;
-			productName = Apollo;
+			productName = Dependencies;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
